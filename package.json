@@ -36,7 +36,8 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --max-warnings=0"
   },
   "eslintConfig": {
     "extends": [

@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import s from './HW11.module.css';
 import s2 from '../../s1-main/App.module.css';
 import { restoreState } from '../hw06/localStorage/localStorage';
@@ -38,7 +38,7 @@ function HW11() {
   //Для синхранизации doubleSlider value1 с singleSlider value1,
   useEffect(() => {
     setValue([value1, value2]);
-  }, [value1]);
+  }, [value1, value2]);
 
   // const onChangeMaxValueHandler = (_: Event, newValue: number | number[]) =>
   //   setMaxOptionsValue(newValue as number); // _ показывает что параметр намеренно не используется

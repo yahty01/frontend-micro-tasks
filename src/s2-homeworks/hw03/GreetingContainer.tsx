@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, KeyboardEvent, useState } from 'react';
+import React, { FC, useState } from 'react';
 import Greeting from './Greeting';
 import { UserType } from './HW3';
 
