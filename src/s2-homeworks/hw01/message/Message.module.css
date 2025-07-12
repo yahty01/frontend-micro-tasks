@@ -1,23 +1,66 @@
 .message {
+    outline: #00cc22 solid 1px;
+    min-height: 60px;
+    color: black;
+    font-size: 18px;
+    font-family: Calibri, sans-serif;
+    width: 100%;
 }
 
 .imageAndText {
+    display: flex;
+    justify-content: right;
+    flex-direction: row-reverse;
 }
 
 .imageAndText img {
+    align-self: end;
+    height: 48px;
+    margin: 0 0 10px 25px;
+}
+
+@media  {
+
 }
 
 .text {
+    background-color:#0066cc;      /* фон пузыря */
+    padding: 10px 16px 16px 16px;
+    border-radius: 12px 12px 0 12px;   /* скругления: сверху округлые, снизу прямые */
+    width: 60%;
+    min-height: 100px;
+    position: relative;             /* чтобы :after позиционировался от этого блока */
+    margin-left: auto;              /* выравнивание вправо */
 }
 
-.text:after {
+.text::after {
+    content: "";
+    position: absolute;
+    right: -29px;      /* как далеко выступает треугольник */
+    bottom: 0;
+
+    width: 0;
+    height: 0;
+    border-bottom: 15px solid #0066cc;    /* цвет как фон пузыря */
+    border-right: 30px solid transparent;
 }
 
 .name {
+    font-weight: bold;
+    text-align: right;
+    color: white;
 }
 
 .messageText {
+    color: white;
+    width: 100%;
+    word-wrap: break-word;
+    white-space: normal;
+    font-size: 16px;
+
 }
 
 .time {
+    text-align: right
 }
+

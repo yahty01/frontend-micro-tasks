@@ -13,14 +13,10 @@ html {
 }
 
 .hw {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-direction: column;
   height: 90vh;
   position: relative; /* Чтобы псевдоэлемент располагался относительно родителя */
-  width: 100%;
-  padding-left: 70px;
+  width: 90%;
+  margin: auto;
   padding-top: 42px;
 }
 
@@ -55,3 +51,8 @@ html {
   bottom: -10px; /* Расстояние от текста */
   left: 0;
 }
+
+.contain {
+  width: 100%;
+}
+
