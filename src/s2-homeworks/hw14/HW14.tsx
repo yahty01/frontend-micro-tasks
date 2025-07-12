@@ -46,15 +46,21 @@ const HW14 = () => {
   };
 
   const onChangeText = (value: string) => {
-    setFind(value);
-    setSearchParams(value);
+    setFind(value); // ✅ просто обновляем состояние
+  };
+
+  const onDebouncedChange = (value: string) => {
+    sendQuery(value); // ✅ отправляем запрос
+    setSearchParams({ find: value }); // ✅ синхронизируем в URL
   };
 
   useEffect(() => {
     const params = Object.fromEntries(searchParams);
-    sendQuery(params.find || '');
-    setFind(params.find || '');
+    const initialValue = params.find || '';
+    setFind(initialValue);
+    sendQuery(initialValue);
   }, []);
+
 
   const mappedTechs = techs.map(t => (
     <div key={t} id={'hw14-tech-' + t} className={s.tech}>
@@ -71,7 +77,7 @@ const HW14 = () => {
           id={'hw14-super-debounced-input'}
           value={find}
           onChangeText={onChangeText}
-          onDebouncedChange={sendQuery}
+          onDebouncedChange={onDebouncedChange}
         />
 
         <div id={'hw14-loading'} className={s.loading}>

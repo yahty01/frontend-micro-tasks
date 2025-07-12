@@ -63,25 +63,37 @@ const HW15 = () => {
   };
 
   const onChangePagination = (newPage: number, newCount: number) => {
-    setPage(newPage);
-    setCount(newCount);
-    sendQuery({ page: String(newPage), count: String(newCount), sort });
-    setSearchParams({ page: String(newPage), count: String(newCount) });
+    setSearchParams({
+      page: String(newPage),
+      count: String(newCount),
+      sort,
+    });
   };
 
   const onChangeSort = (newSort: string) => {
-    setSort(newSort);
-    setPage(1); // при сортировке сбрасывать на 1 страницу
-    setSearchParams({ page: '1', count: String(count), sort: newSort });
-    sendQuery({ page: '1', count: String(count), sort: newSort });
+    setSearchParams({
+      page: '1', // сброс страницы при сортировке
+      count: String(count),
+      sort: newSort,
+    });
   };
 
   useEffect(() => {
-    const params = Object.fromEntries(searchParams);
-    sendQuery({ page: params.page, count: params.count, sort: params.sort });
-    setPage(+params.page || 1);
-    setCount(+params.count || 4);
-  }, []);
+    const params = Object.fromEntries(searchParams) as Partial<ParamsType>;
+
+    const actualParams: ParamsType = {
+      page: params.page || '1',
+      count: params.count || '4',
+      sort: params.sort || '',
+    };
+
+    setPage(+actualParams.page);
+    setCount(+actualParams.count);
+    setSort(actualParams.sort);
+
+    sendQuery(actualParams);
+  }, [searchParams.toString()]);
+
 
   const mappedTechs = techs.map(t => (
     <div key={t.id} className={s.row}>
