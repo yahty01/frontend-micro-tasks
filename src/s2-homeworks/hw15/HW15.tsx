@@ -92,7 +92,7 @@ const HW15 = () => {
     setSort(actualParams.sort);
 
     sendQuery(actualParams);
-  }, [searchParams.toString()]);
+  }, [searchParams]);
 
 
   const mappedTechs = techs.map(t => (

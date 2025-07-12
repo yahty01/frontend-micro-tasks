@@ -59,7 +59,7 @@ const HW14 = () => {
     const initialValue = params.find || '';
     setFind(initialValue);
     sendQuery(initialValue);
-  }, []);
+  }, [searchParams]);
 
 
   const mappedTechs = techs.map(t => (
